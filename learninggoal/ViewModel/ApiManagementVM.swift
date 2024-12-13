@@ -11,7 +11,7 @@ class ApiManagementVM: ObservableObject{
     @Published var coins : [Datas] = [ ]
     
    
-    
+    @MainActor
     func getCoins()  async throws{
         let endpoint = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=btc"
         if let url = URL(string: endpoint){

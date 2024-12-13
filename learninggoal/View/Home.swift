@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct Home: View {
-   @StateObject private var vm = ApiManagementVM()
+    @StateObject private var vm = ApiManagementVM()
     var body: some View {
         List{
             ForEach(vm.coins, id: \.id){datas in
                // Text(datas.id)
-                CoinView(item: datas.id, itemImage: datas.image)
+               
+                CoinView(item: datas.id,
+                itemImage: datas.image)
+                NavigationLink {
+                    CoinDetailsView(items: datas)
+                } label: {
+                    Text("")
+                }
+               
+
+               
+
+
             }
         }.task {
          try!   await vm.getCoins()
         }
     }
 }
-
 #Preview {
     Home()
 }
@@ -37,7 +48,7 @@ struct CoinView: View {
                     .frame(width: 50, height: 50)
                     
             }
-            let _: Void = UserDefaults.standard.set("a", forKey: "k")
+           
         }
     }
 }

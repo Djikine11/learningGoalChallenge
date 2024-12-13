@@ -9,7 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Home()
+        NavigationStack{
+            TabView{
+                Tab("coins", systemImage: "bitcoinsign"){
+                    Home()
+                }
+                
+                Tab("Trailers", systemImage: "movieclapper"){
+                    TraillerView()
+                }
+            }
+        }
     }
 }
 
